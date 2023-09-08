@@ -10,15 +10,13 @@ import { Job } from './job.model';
 })
 export class AppComponent implements  OnInit{
   jobs: Job[] = []
-  roles: string[] = ['Frontend', 'Backend', 'Fullstack'];
-  levels: string[] = ['Junior', 'Midweight', 'Senior'];
-  languages: string[] = ['Python', 'JavaScript', 'Ruby', 'PHP'];
-  tools: string[] = ['React', 'Sass', 'Ruby', 'RoR'];
   filters: string[] = [];
+  classList: string[] = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.updatedClassList();
     this.loadJsonData();
   }
 
@@ -27,34 +25,49 @@ export class AppComponent implements  OnInit{
     this.http.get(jsonFileUrl).subscribe((data: any) => {
       this.jobs = data;
       console.log(this.jobs);
+      this.filterJobs();
     });
   }
 
+  updatedClassList() {
+    if (this.filters.length > 0) {
+      this.classList = ["list", "add-margin"];
+    } else {
+      this.classList = ["list"];
+    }
+  }
 
-  addFilter(filter: string) {
+  addFilter(filter: string, filterTwo?: string) {
     if (!this.filters.includes(filter)) {
       this.filters.push(filter);
-      this.filterJobs();
+      if (filterTwo && !this.filters.includes(filterTwo) ) {
+        this.filters.push(filterTwo);
+      }
+      this.updatedClassList();
+      this.loadJsonData();
     }
   }
 
   removeFilter(filter: string) {
     this.filters = this.filters.filter((f) => f !== filter);
-    this.filterJobs();
+    this.updatedClassList();
+    this.loadJsonData();
   }
 
   clearFilters() {
     this.filters = [];
+    this.updatedClassList();
     this.loadJsonData();
   }
 
   filterJobs() {
-    this.loadJsonData();
+    console.log("filtering jobs");
+    console.log("loaded jobs");
     const filters = this.filters;
     const jobs = this.jobs;
     const filteredJobs = jobs.filter((job) => {
-      const jobLanguages = [...job.languages, ...job.tools];
-      return filters.every((filter) => jobLanguages.includes(filter));
+      const jobFilters = [...job.languages, ...job.tools, job.role, job.level];
+      return filters.every((filter) => jobFilters.includes(filter));
     });
     this.jobs = filteredJobs;
   }
