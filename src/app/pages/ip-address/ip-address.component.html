@@ -1,1 +1,39 @@
-<p>ip-address works!</p>
+<nav class="header">
+  <h1 class="header-title">IP Address Tracker</h1>
+  <div class="header-search">
+    <input
+      type="text"
+      class="header-search__input"
+      placeholder="Search for any IP address or domain"
+      [(ngModel)]="search"
+      (keyup.enter)="searchIp()"
+    />
+    <button class="header-search__button" (click)="searchIp()">
+      <img src="assets/images/icon-arrow.svg" alt="search" />
+    </button>
+  </div>
+  <div class="header-data">
+    <div class="header-data__item">
+      <p class="header-data__item-title">IP ADDRESS</p>
+      <p class="header-data__item-data">{{ ip }}</p>
+    </div>
+    <div class="header-data__item">
+      <p class="header-data__item-title">LOCATION</p>
+      <p class="header-data__item-data">{{ location }}</p>
+    </div>
+    <div class="header-data__item">
+      <p class="header-data__item-title">TIMEZONE</p>
+      <p class="header-data__item-data">{{ timezone }}</p>
+    </div>
+    <div class="header-data__item">
+      <p class="header-data__item-title">ISP</p>
+      <p class="header-data__item-data">{{ isp }}</p>
+    </div>
+  </div>
+</nav>
+<div id="map" class="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
+

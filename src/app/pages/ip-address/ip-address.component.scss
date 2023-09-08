@@ -1,0 +1,95 @@
+@import 'variables';
+
+.header{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 220px;
+  background-color: $background;
+  background-image: url('../../../assets/images/pattern-bg.png');
+  color: $backColor;
+  font-family: $rubik;
+  .header-title{
+    font-weight: $weight-500;
+    font-size: 20px;
+    color: #fff;
+    margin: 20px;
+  }
+  .header-search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 40px;
+    margin-bottom: 25px;
+    .header-search__input{
+      display: flex;
+      width: 80%;
+      height: 40px;
+      padding: 10px;
+      border-radius: 10px 0 0 10px;
+      border: none;
+      font-size: 0.8125rem;
+      font-weight: $weight-700;
+      color: $veryDarkColor;
+      &::placeholder{
+        color: $darkGrayColor;
+      }
+      &:focus{
+        outline: none;
+      }
+    }
+    .header-search__button{
+      width: 40px;
+      height: 40px;
+      background-color: $backColor;
+      background-image: url('../../../assets/images/icon-arrow.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      border: none;
+      border-radius: 0 10px 10px 0;
+      cursor: pointer;
+    }
+  }
+  .header-data{
+    position: absolute;
+    top: 55%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    padding: 20px 15px 5px 30px;
+    background-color: $backgroundCards;
+    border-radius: 10px;
+    .header-data__item{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 20px 15px;
+      .header-data__item-title{
+        font-size: 10px;
+        font-weight: $weight-700;
+        color: $darkGrayColor;
+        margin-bottom: 10px;
+      }
+      .header-data__item-data{
+        font-size: 17px;
+        font-weight: $weight-700;
+      }
+    }
+  }
+}
+
+@media (min-width: 570px){
+  .header-data__item{
+    border-left: 1px solid rgb(0, 0, 0, 0.1);
+    padding-left: 15px;
+  }
+  .header-data__item:first-child{
+    border-left: none;
+    padding-left: 0;
+  }
+}
