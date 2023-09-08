@@ -43,7 +43,7 @@ export class IpAddressComponent {
     const urlIpify="https://geo.ipify.org/api/v2/country,city?apiKey=at_un4vPsJCSR7GEDOh1O3vxa5JUS3pF&ipAddress="+this.search;
     this.http.get(urlIpify).subscribe((data: any) => {
       this.ip = data.ip;
-      this.location = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
+      this.location = `${data.location.city}, ${data.location.region}, ${data.location.country}, ${data.location.postalCode}`;
       this.timezone = 'UTC ' + data.location.timezone;
       this.isp = data.isp;
       this.markerItem.setLatLng([data.location.lat, data.location.lng]);
