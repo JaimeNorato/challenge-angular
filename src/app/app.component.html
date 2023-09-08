@@ -1,51 +1,7 @@
-<nav class="header">
-  <div class="header-filters" *ngIf="filters.length>0">
-    <ul class="filters">
-      <li *ngFor="let filter of filters" class="filters-item">
-        <p class="filters-item__data">{{filter}}</p>
-        <p class="filters-item__close" (click)="removeFilter(filter)"></p>
-      </li>
-    </ul>
-    <div class="filters-clear" (click)="clearFilters()">Clear</div>
-  </div>
-</nav>
-
-<div>
-  <ul [class]="classList">
-    <li *ngFor="let job of jobs" class="card">
-      <img [src]="job.logo" [alt]="job.company" class="logo">
-      <div class="card-header">
-        <h3 class="card-header__company">{{ job.company }}</h3>
-        <p *ngIf="job.new" class="card-header__new">NEW!</p>
-        <p *ngIf="job.featured" class="card-header__featured">FEATURED</p>
-      </div>
-      <div class="card-body">
-        <h2
-          class="card-body__position"
-          (click)="addFilter(job.role, job.level)"
-        >{{ job.position }}</h2>
-        <ul class="card-body__details">
-          <li class="card-body__details-item">{{ job.postedAt }}</li>
-          <li class="card-body__details-item">{{ job.contract }}</li>
-          <li class="card-body__details-item">{{ job.location }}</li>
-        </ul>
-      </div>
-      <div class="card-footer">
-        <ul class="card-footer__item">
-          <li
-            class="card-footer__item-data"
-            *ngFor="let language of job.languages"
-            (click)="addFilter(language)"
-          >{{language}}</li>
-        </ul>
-        <ul class="card-footer__item">
-          <li
-            class="card-footer__item-data"
-            *ngFor="let tool of job.tools"
-            (click)="addFilter(tool)"
-          >{{tool}}</li>
-        </ul>
-      </div>
-    </li>
+<!-- <div>
+  <ul>
+    <li><a href="/job">Job Listings</a></li>
+    <li><a href="/ip-address">IP Address Tracker</a></li>
   </ul>
-</div>
+</div> -->
+<router-outlet></router-outlet>
