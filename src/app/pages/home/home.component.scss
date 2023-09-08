@@ -1,0 +1,39 @@
+@import 'variables.scss';
+
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10%;
+  font-family: $rubik;
+  font-size: 20px;
+  font-weight: $weight-700;
+  .challenges{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $veryDarkColor;
+    width: 50%;
+    height: 200px;
+    border-radius: 10px;
+    .challenges-item{
+      margin: 10px;
+      background-color: $primaryColor;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 10px;
+      a{
+        color: #fff;
+        text-decoration: none;
+      }
+      &:hover{
+        background-color: $secondaryColorDark;
+        border: 1px solid $primaryColor;
+        a{
+          color: $primaryColor;
+        }
+      }
+    }
+  }
+}
